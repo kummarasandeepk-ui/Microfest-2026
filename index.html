@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MICROFEST 2026 | Junior Invitation</title>
+<style>
+*{box-sizing:border-box}body{margin:0;min-height:100vh;background:radial-gradient(circle at top,#4b2860,#100b1b 58%,#07050c);color:#fff;font-family:Georgia,serif;display:grid;place-items:center;padding:22px}
+.wrap{width:min(440px,100%);text-align:center}.logo{color:#f8d77b;letter-spacing:5px;font:700 12px Arial;margin-bottom:14px}
+.panel{background:linear-gradient(145deg,#21142c,#100c18);border:1px solid #c99b42;border-radius:22px;padding:27px 22px;box-shadow:0 0 35px #d49b3933}
+h1{font-size:30px;color:#f7d77d;margin:8px 0}p{color:#e7d9c2;line-height:1.5}
+input{width:100%;padding:15px;margin:9px 0;border:1px solid #b98b39;border-radius:10px;background:#130d1b;color:white;font-size:16px;outline:none}
+button{width:100%;padding:15px;border:0;border-radius:30px;margin-top:12px;background:linear-gradient(90deg,#a86b20,#f5d77b,#a86b20);color:#20120a;font-weight:bold;font-size:16px;cursor:pointer}
+.small{font:12px Arial;color:#c7b6d0}.hidden{display:none}
+.ticket{border:2px solid #d9b45e;border-radius:16px;padding:22px 16px;background:linear-gradient(160deg,#382044,#17101e 55%,#4b2c26);position:relative;overflow:hidden}
+.ticket:before{content:"✦  ✧  ✦  ✧  ✦";display:block;color:#f4d47b;letter-spacing:8px;margin-bottom:16px}
+.kicker{font:700 11px Arial;letter-spacing:4px;color:#f8d77b}
+.event{font-size:36px;color:#ffe49a;margin:13px 0;text-shadow:0 0 18px #f3c75a66}
+.rule{height:1px;background:linear-gradient(90deg,transparent,#e6c36d,transparent);margin:18px 0}
+.details{font:14px Arial;line-height:1.9;color:#fff0d1}
+.name{font-size:24px;color:#ffe49a;margin:14px 0 5px}
+.id{font:12px Arial;color:#e4c98e}
+.foot{font:11px Arial;color:#d8c5a5;margin-top:18px}
+</style>
+</head>
+<body>
+<main class="wrap">
+  <div class="logo">SGS ARTS COLLEGE • TIRUPATI</div>
+  <section class="panel" id="entry">
+    <div class="kicker">A SPECIAL INVITATION FOR YOU</div>
+    <h1>HELLO, JUNIOR!</h1>
+    <p>Enter your details to reveal your personalized MICROFEST invitation.</p>
+    <input id="studentName" maxlength="50" placeholder="Your good name" autocomplete="name">
+    <input id="studentId" maxlength="30" placeholder="Your student ID">
+    <button onclick="openInvite()">OPEN MY INVITATION ✨</button>
+    <p class="small">One common QR code • A personalized invitation for every junior</p>
+  </section>
+
+  <section class="panel hidden" id="welcome">
+    <div class="kicker">YOU'RE INVITED</div>
+    <h1 id="welcomeName">WELCOME!</h1>
+    <p>Your special invitation is ready.</p>
+    <button onclick="showCard()">VIEW MY INVITATION ✨</button>
+  </section>
+
+  <section class="panel hidden" id="cardPanel">
+    <div class="ticket">
+      <div class="kicker">SGS ARTS COLLEGE • TIRUPATI</div>
+      <div class="event">MICROFEST<br>2026</div>
+      <div class="rule"></div>
+      <div class="kicker">PERSONAL INVITATION</div>
+      <div class="name" id="cardName"></div>
+      <div class="id" id="cardId"></div>
+      <div class="rule"></div>
+      <div class="details">
+        YOU ARE CORDIALLY INVITED<br>
+        <strong>20 OCTOBER 2026</strong><br>
+        <strong>10:00 AM</strong><br>
+        SGS ARTS COLLEGE, TIRUPATI
+      </div>
+      <div class="foot">Let’s celebrate, connect and create unforgettable memories!</div>
+    </div>
+    <button onclick="window.print()">SAVE / PRINT INVITATION</button>
+    <p class="small">Please keep this invitation for the event.</p>
+  </section>
+</main>
+<script>
+let juniorName="", juniorId="";
+function openInvite(){
+ juniorName=document.getElementById('studentName').value.trim();
+ juniorId=document.getElementById('studentId').value.trim();
+ if(!juniorName||!juniorId){alert("Please enter your name and student ID.");return;}
+ document.getElementById('welcomeName').textContent="WELCOME, "+juniorName+"!";
+ document.getElementById('entry').classList.add('hidden');
+ document.getElementById('welcome').classList.remove('hidden');
+}
+function showCard(){
+ document.getElementById('cardName').textContent=juniorName;
+ document.getElementById('cardId').textContent="STUDENT ID: "+juniorId;
+ document.getElementById('welcome').classList.add('hidden');
+ document.getElementById('cardPanel').classList.remove('hidden');
+}
+</script>
+</body>
+</html>
